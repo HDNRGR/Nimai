@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIMAI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1 class="logo">
+      <a href="#">
+        <img src="Images/Icon.png" alt="Nimai Logo" class="nav-logo">
+      </a>
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="#upcoming">UPCOMING</a></li>
+        <li><a href="#aboutus">ABOUT US</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#" class="login-link">LOG IN</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-image">
+      <div class="hero-overlay overlay-a"></div>
+      <div class="hero-overlay overlay-b"></div>
+    </div>
+
+    <div class="hero-text">
+      <img src="Images/Logo.png" alt="Nimai Logo" class="hero-logo">
+      <p></p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn">View Auctions</a>
+        <a href="#register" class="btn btn-register">Register Now</a>
+      </div>
+    </div>
+
+    <div class="hero-bottom-text">
+      <p>Online Auctioning Software</p>
+    </div>
+  </section>
+
+  <!-- Upcoming Section -->
+  <section id="upcoming" class="upcoming">
+    <div class="scroll-offset"></div>
+    <h2 class="fade-left">UPCOMING AUCTIONS</h2>
+    <h3>Exceptional assets, meticulously verified and ready for acquisition.</h3>
+
+    <!-- Auction Filters -->
+    <div class="auction-filters">
+      <input type="text" id="auctionSearch" placeholder="Search Auctions...">
+
+      <select id="categoryFilter">
+        <option value="">Category</option>
+        <option value="art">Art</option>
+        <option value="vehicles">Vehicles</option>
+        <option value="electronics">Electronics</option>
+      </select>
+
+      <select id="typeFilter">
+        <option value="">Type</option>
+        <option value="live">Live</option>
+        <option value="online">Online</option>
+        <option value="online">Pevious</option>
+      </select>
+
+      <div class="min-max-wrapper">
+      <select id="minPrice">
+        <option value="">Min Price</option>
+        <option value="1000">R1,000</option>
+        <option value="5000">R5,000</option>
+        <option value="10000">R10,000</option>
+      </select>
+
+      <select id="maxPrice">
+        <option value="">Max Price</option>
+        <option value="5000">R5,000</option>
+        <option value="10000">R10,000</option>
+        <option value="50000">R50,000</option>
+      </select>
+      </div>
+    </div>
+
+    <div id="listingCount" class="listing-count">
+    Showing 0 of 0 listings
+  </div>
+
+  <div id="auctionClock" class="auction-clock"></div>
+
+    <div class="carousel">
+      <!-- Left Arrow -->
+      <button class="carousel-btn prev">&#10094;</button>
+
+      <!-- Slider Wrapper -->
+      <div class="carousel-track-container">
+        <div class="carousel-track">
+
+          <!-- Auction Cards -->
+            <div class="auction-card">
+            <img src="Images/Image1.png" alt="Auction Item" loading="lazy">
+
+            <div class="date-tag">
+            <span>March 13</span>
+          </div>
+
+            <!-- Price & Condition individually wrapped -->
+            <div class="auction-card-details">
+              <div class="condition-box">
+                <span class="condition-text">Brand New</span>
+              </div>
+              <div class="price-box">
+                <span class="price-text">R400,000</span>
+              </div>
+            </div>
+
+            <a href="#" class="btn auction-btn view-popup" data-img="Images/Image1.png" loading="lazy">View Auction</a>
+          </div>
+
+          <div class="auction-card">
+          <img src="Images/Image2.png" alt="Auction Item" loading="lazy">
+
+          <div class="date-tag">
+          <span>April 27</span>
+        </div>
+
+          <!-- Price & Condition individually wrapped -->
+          <div class="auction-card-details">
+            <div class="condition-box3">
+              <span class="condition-text">Used</span>
+            </div>
+            <div class="price-box">
+              <span class="price-text">R80,000</span>
+            </div>
+          </div>
+
+          <a href="#" class="btn auction-btn view-popup" data-img="Images/Image2.png" loading="lazy">View Auction</a>
+        </div>
+
+          <div class="auction-card">
+          <img src="Images/Image3.png" alt="Auction Item" loading="lazy">
+
+          <div class="date-tag">
+          <span>MAY 10</span>
+        </div>
+
+          <div class="auction-card-details">
+            <div class="condition-box2">
+              <span class="condition-text">Fairly New</span>
+            </div>
+            <div class="price-box">
+              <span class="price-text">R125,000</span>
+            </div>
+          </div>
+
+          <a href="#" class="btn auction-btn view-popup" data-img="Images/Image3.png" loading="lazy">View Auction</a>
+        </div>
+
+          <div class="auction-card">
+            <img src="Images/Image4.png" alt="Auction Item" loading="lazy">
+            <div class="date-tag">
+            <span>MAY 12</span>
+          </div>
+
+          <div class="auction-card-details">
+            <div class="condition-box">
+              <span class="condition-text">New</span>
+            </div>
+            <div class="price-box">
+              <span class="price-text">R600,000</span>
+            </div>
+          </div>
+            <a href="#" class="btn auction-btn view-popup" data-img="Images/Image4.png" loading="lazy">View Auction</a>
+          </div>
+
+          <div class="auction-card">
+            <img src="Images/Image5.png" alt="Auction Item" loading="lazy">
+            <div class="date-tag">
+            <span>MAY 19</span>
+          </div>
+
+          <div class="auction-card-details">
+            <div class="condition-box">
+              <span class="condition-text">New</span>
+            </div>
+            <div class="price-box">
+              <span class="price-text">R2,000,000</span>
+            </div>
+          </div>
+            <a href="#" class="btn auction-btn view-popup" data-img="Images/Image5.png" loading="lazy">View Auction</a>
+          </div>
+
+          <div class="auction-card">
+            <img src="Images/Image6.png" alt="Auction Item" loading="lazy">
+            <div class="date-tag">
+            <span>July 1</span>
+          </div>
+
+          <div class="auction-card-details">
+            <div class="condition-box2">
+              <span class="condition-text">Fairly New</span>
+            </div>
+            <div class="price-box">
+              <span class="price-text">R1,800,000</span>
+            </div>
+          </div>
+            <a href="#" class="btn auction-btn view-popup" data-img="Images/Image6.png" loading="lazy">View Auction</a>
+          </div>
+
+          <div class="auction-card">
+            <img src="Images/Image7.png" alt="Auction Item" loading="lazy">
+            <div class="date-tag">
+              <span>August 12</span>
+            </div>
+
+            <div class="auction-card-details">
+            <div class="condition-box3">
+              <span class="condition-text">Used</span>
+            </div>
+            <div class="price-box">
+              <span class="price-text">R95,000</span>
+            </div>
+          </div>
+            <a href="#" class="btn auction-btn view-popup" data-img="Images/Image7.png" loading="lazy">View Auction</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Arrow -->
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+
+    <div class="view-all-container">
+      <button class="btn" id="viewAllBtn">View All</button>
+    </div>
+  </section>
+
+  <!-- About US -->
+  <section id="aboutus" class="aboutus">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>ABOUT US</h2>
+        <p>
+      NIMAI is a shared online auction platform,
+      proudly hosting online auctions for a wide variety<br>of reputable auctioneers
+      across South Africa so that you have access to the best auction stock
+      in the country and beyond.
+    </p>
+
+    <!-- Image -->
+    <div class="about-slider">
+      <div class="about-slider-track">
+        <img src="Images/about1.jpg" alt="Auction Image 1" loading="lazy">
+        <img src="Images/about2.jpg" alt="Auction Image 2" loading="lazy">
+        <img src="Images/about3.jpg" alt="Auction Image 3" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Text wrapping around image -->
+    <p>
+      With our simple bidding software, we expand your access to auctions
+      normally off limits because of distance (be it geographical or social).<br><br>
+
+      Register for a free bidder account and come see the difference for yourself.<br><br>
+
+      Our platform combines cutting-edge technology with the expertise of established
+      auctioneers, giving bidders a seamless online experience from registration
+      to final payment.
+
+      Whether you're looking for vehicles, art, electronics, or unique collectibles,
+      NIMAI connects buyers with trusted sellers across the country.
+
+      Through real-time bidding, secure payment processing, and verified listings,
+      we ensure transparency and confidence in every transaction.
+    </p>
+
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <div class="why-nimai">
+  <h3>WHY CHOOSE NIMAI</h3>
+
+  <div class="why-grid">
+
+    <div class="why-card">
+      <img src="Images/shield-icon.png" alt="Verified & Trusted Icon" class="why-icon">
+      <p>Every asset undergoes KYC verification. Full provenance documentation and independent condition reports.</p>
+    </div>
+
+    <div class="why-card">
+      <img src="Images/clock-icon.png" alt="Real-Time Bidding Icon" class="why-icon">
+      <p>Live auctions with instant updates via SignalR. Proxy bids, buy-now, and timed sales all in one platform.</p>
+    </div>
+
+    <div class="why-card">
+      <img src="Images/hexagon-icon.png" alt="360° Asset Views Icon" class="why-icon">
+      <p>Immersive showroom experience with multi-angle photography and 3D viewing technology.</p>
+    </div>
+
+    <div class="why-card">
+      <img src="Images/card-icon.png" alt="Secure Payments Icon" class="why-icon">
+      <p>Stripe & PayPal integration with deposit management, automated invoicing, and escrow protection.</p>
+    </div>
+
+  </div>
+</div>
+
+    <div class="about-stats">
+      <div class="stat">
+        <h3>250+</h3>
+        <p>Assets Sold</p>
+      </div>
+      <div class="stat">
+        <h3>500+</h3>
+        <p>Registered Users</p>
+      </div>
+      <div class="stat">
+        <h3>R15M+</h3>
+        <p>Total Sales</p>
+      </div>
+      <div class="stat">
+        <h3>99%</h3>
+        <p>Satisfaction Rate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2 class="contact-main-heading">CONTACT US</h2>
+
+    <div class="contact-wrapper">
+      <div class="contact-container">
+        <div class="contact-box">
+          <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button id="sendMessageBtn" type="submit">Send Message</button>
+          </form>
+
+          <div class="socials">
+            <a href="https://www.instagram.com/hidden.rager"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@hidden.rager"><i class="fab fa-tiktok"></i></a>
+            <a href="https://twitter.com/hidden_rager"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-info-card">
+          <h3>Get In Touch</h3>
+          <div class="contact-detail">
+            <span>PHONE</span>
+            <a href="tel:+27123456789" class="contact-link">+27 12 345 6789</a>
+          </div>
+          <div class="contact-detail">
+            <span>EMAIL</span>
+            <a href="mailto:info@nimai.co.za" class="contact-link">info@nimai.co.za</a>
+            <div class="contact-footer-links">
+              <a href="#" class="footer-link">Help & Support</a>
+              <a href="#" class="footer-link">Legal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-bottom-links">
+  <a href="#" class="footer-link">FAQ</a>
+  <a href="#" class="footer-link">Privacy Policy</a>
+  <a href="#" class="footer-link">Refund Policy</a>
+  <a href="#" class="footer-link">KYC Verification</a>
+  </div>
+
+  <p class="contact-bottom-text">
+  Trusted by buyers and sellers across South Africa.
+  </p>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 NIMAI All rights reserved.</p>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+  <div class="login-modal">
+    <div class="login-overlay"></div>
+    <div class="login-container">
+      <form id="loginForm" class="auth-form active">
+        <h2>Welcome Back</h2>
+        <input type="text" name="username" placeholder="Username or Email" required>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="loginPassword" placeholder="Password" required>
+          <span class="toggle-password" data-target="loginPassword">Show</span>
+        </div>
+        <button type="submit" class="btn">Log In</button>
+        <p class="signup-text">Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+      </form>
+
+      <form id="signupForm" class="auth-form">
+        <h2>Create an Account</h2>
+        <div class="name-row">
+        <input type="text" name="firstname" placeholder="First Name" required>
+        <input type="text" name="lastname" placeholder="Last Name" required>
+        </div>
+        <input type="email" name="email" placeholder="Email" required>
+        <select name="accountType" required>
+        <option value="AccountT" disabled selected>Account Type</option>
+        <option value="buyer">Buyer</option>
+        <option value="seller">Seller</option>
+        <option value="business">Business</option>
+        </select>
+        <input type="text" name="company-name" placeholder="Company Name (Optional)">
+        <div class="password-wrapper">
+          <input type="password" name="password" id="signupPassword" placeholder="Password" required>
+          <span class="toggle-password" data-target="signupPassword">Show</span>
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+        <p class="signup-text">Already have an account? <a href="#" id="showLogin">Log In</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- AUCTION POPUP -->
+<div class="auction-popup">
+  <div class="auction-popup-overlay"></div>
+
+  <div class="auction-popup-container">
+
+    <!-- LEFT IMAGE AREA -->
+    <div class="auction-popup-gallery">
+
+      <img class="popup-main-image" src="" alt="Auction Image" loading="lazy">
+
+      <div class="popup-controls">
+        
+  <!-- LEFT SIDE BUTTONS -->
+<div class="popup-controls-left">
+  <button class="popup-btn prev-img">
+    <img src="Images/lefta.png" alt="Previous">
+  </button>
+  <button class="popup-btn play-img">
+    <img src="Images/play.png" alt="Play">
+  </button>
+  <button class="popup-btn next-img">
+    <img src="Images/righta.png" alt="Next">
+  </button>
+</div>
+
+<!-- RIGHT SIDE BUTTONS -->
+<div class="popup-controls-right">
+  <button class="popup-btn fullscreen-img">
+    <img src="Images/fscreen.png" alt="Fullscreen">
+  </button>
+  <button class="popup-btn close-popup">
+    <img src="Images/close.png" alt="Close">
+  </button>
+</div>
+  <span class="popup-counter">1/5</span>
+</div>
+
+      <div class="popup-progress">
+        <div class="popup-progress-bar"></div>
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT INFO AREA -->
+    <div class="auction-popup-info">
+
+      <h2 class="popup-title">Auction Name</h2>
+
+      <p class="popup-meta">
+        AUCTION TIME<br>
+        AUCTION LOCATION
+      </p>
+
+    <div class="starting-bid">
+      <h3 class="popup-bid">STARTING BID PRICE<br>R80,000</h3>
+    </div>
+
+      <p class="popup-details">
+        Type: Public<br>
+        Status: Active<br>
+        Starts: Mar 09, 2026 11:30PM<br>
+        Ends: Mar 12, 2026 11:30AM
+      </p>
+
+      <div class="popup-bottom-row">
+  <button class="popup-btn enter-now">Enter Now</button>
+  <img src="Images/Icon.png" class="popup-logo">
+</div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

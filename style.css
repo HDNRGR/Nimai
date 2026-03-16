@@ -1,0 +1,2251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Figtree', 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #e3e2e0;
+  font-weight: bold;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(92, 92, 92, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 20px;
+  z-index: 1000;
+  transition: all 0.3s ease; /* enables animation */
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Animate navbar on hover */
+.navbar:hover {
+  transform: translateX(-50%) translateY(-2px); /* lift up slightly */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);   /* stronger shadow */
+  background: rgba(92, 92, 92, 0.2);        /* lighten background */
+  width: 93%;
+}
+
+/* Navbar text */
+.navbar .logo {
+  color: #fff; 
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.navbar .logo a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 5px; /* spacing between menu items */
+}
+
+/* Navbar links with underline animation */
+.navbar ul li a {
+  position: relative;           /* needed for pseudo-element */
+  display: inline-block;
+  color: #e9e9e9;               /* default text color */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 8px 14px;
+  transition: color 0.3s ease, transform 0.35s ease;
+  border-radius: 0;             /* remove bubble effect */
+  background: none;             /* remove background */
+}
+
+/* Create green underline */
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;                /* position the underline just below text */
+  width: 0%;
+  height: 2px;
+  background: #8cc63f;          /* same green */
+  transition: width 0.35s ease;
+}
+
+/* On hover: expand underline */
+.navbar ul li a:hover {
+  color: #fff;
+  transform: translateY(0);
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
+}
+/* Navbar Logo Image */
+.nav-logo {
+  height: 27px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 520px) {
+
+  /* Hide logo */
+  .nav-logo {
+    display: none;
+  }
+
+  /* Navbar container tweaks */
+  .navbar {
+    justify-content: center;
+    padding: 2px 10px;
+    flex-wrap: nowrap;       /* prevent wrapping */
+  }
+
+  /* Navbar items */
+  .navbar ul {
+    gap: 6px;                /* slightly bigger spacing with no logo */
+    flex-wrap: nowrap;       /* force single line */
+    overflow-x: auto;        /* allow horizontal scroll if needed */
+  }
+
+  /* Navbar links */
+  .navbar ul li a {
+    font-size: 1rem;         /* slightly bigger now */
+    padding: 6px 10px;       /* slightly more comfortable padding */
+    white-space: nowrap;     /* prevent text from breaking */
+  }
+}
+
+
+/*Landing Page*/ 
+
+.hero {
+  height: 100vh;
+  background: url("Images/heroshot.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 0 20px;
+}
+
+.hero-text h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #00ff4c;
+}
+
+/* Hero Logo Image */
+.hero-logo {
+  width: 600px;
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+
+.hero {
+  position: relative; /* important */
+}
+
+/* Top & Bottom Green Borders for Hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;             /* thin border height */
+  background-color: #8cc63f; /* your green accent */
+  z-index: 2;               /* above overlays but below text/buttons */
+}
+
+.hero::after {
+  bottom: 0;                /* bottom border */
+}
+
+/* Thin overlay background centered behind hero content */
+.hero-overlay {
+  position: absolute;
+  top: 50%;                  /* vertical center relative to hero */
+  left: 50%;                 /* horizontal center */
+  transform: translate(-50%, -50%); /* center precisely */
+  width: 100%;              /* match roughly the hero logo width */
+  height: 60%;             /* thin band height */
+  background: url("Images/hero1.jpg") center/cover no-repeat;
+  opacity: 0.15;             /* subtle overlay */
+  pointer-events: none;      /* let clicks pass through */
+  z-index: 0;                /* behind text/buttons */
+  border-radius: 10px;       /* optional soft edges */
+}
+
+.overlay-a,
+.overlay-b{
+    transition: opacity 2s ease;
+}
+
+.overlay-a{ opacity:0.15; }
+.overlay-b{ opacity:0; }
+
+/* Ensure hero content is above overlay */
+.hero-text,
+.hero-buttons,
+.hero-bottom-text {
+  position: relative;
+  z-index: 1;
+  font-weight: lighter;
+}
+
+.hero-bottom-text {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* Animate the existing green bar above hero-bottom-text */
+.hero-bottom-text::before {
+  content: "";
+  display: block;
+  width: 0%;              /* start hidden */
+  height: 3px;            /* make it a bit thicker for visibility */
+  background: #8cc63f;    /* same green as buttons/navbar */
+  margin: 0 auto 15px auto;
+  border-radius: 2px;
+
+  animation: slideInGreen 1s forwards;  /* animate width from 0 → full */
+  animation-delay: 0.5s;                /* start slightly after fadeUp */
+}
+
+@keyframes slideInGreen {
+  from { width: 0%; }
+  to   { width: 60%; }   /* match your previous static width */
+}
+
+.hero-bottom-text {
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+  from { transform: translate(-50%, 20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Container for hero buttons */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;        /* space between buttons */
+  margin-top: 20px;
+  flex-wrap: wrap;  /* stack buttons on mobile */
+}
+
+.hero-buttons {
+  opacity: 0;
+  animation: fadeUpButtons 1.2s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUpButtons {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Register Now button */
+.btn-register {
+  background: #8cc63f; /* green default background */
+  color: #111;         /* dark text */
+}
+
+.btn-register:hover {
+  background: #6aa84f; /* darker green on hover */
+  color: #fff;         /* white text on hover */
+  transform: scale(1.05);
+}
+
+.btn,
+button.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  border: none;          /* remove default border */
+  outline: none;         /* remove focus outline */
+  border-radius: 5px;
+  cursor: pointer;       /* pointer cursor for buttons */
+  transition: all 0.3s ease-in-out;
+  font-weight: lighter;
+}
+
+.btn:hover {
+  background: #8cc63f;   /* lighter/darker background */
+  color: #ffffff;     /* change text color */
+  transform: scale(1.05); /* subtle zoom effect */
+}
+
+/* Button Shine Overlay */
+.hero .btn,
+.btn-register {
+  position: relative; /* needed for overlay */
+  overflow: hidden;   /* hide overflow of shine */
+  z-index: 1;         /* keep above background */
+}
+
+/* Create the shine layer */
+.hero .btn::after,
+.btn-register::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;               /* start off left */
+  width: 50%;               /* width of the shine */
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-25deg); /* angled shine */
+  transition: none;
+  pointer-events: none;      /* don't block clicks */
+  z-index: 2;                /* above text & background */
+}
+
+/* Animate shine on hover */
+.hero .btn:hover::after,
+.btn-register:hover::after {
+  animation: shineButton 1s forwards;
+}
+
+@keyframes shineButton {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+/* General button shine effect */
+.btn,
+#viewAllBtn,
+#sendMessageBtn {  /* add your Send Message button ID */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before,
+#viewAllBtn::before,
+#sendMessageBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease-in-out;
+  z-index: 2;
+}
+
+.btn:hover::before,
+#viewAllBtn:hover::before,
+#sendMessageBtn:hover::before {
+  left: 125%;
+}
+
+/* Upcoming */
+.upcoming {
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.upcoming-text {
+  grid-column: 2;
+  text-align: left;
+}
+
+.upcoming h2,
+.contact-main-heading {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+.upcoming h2::after,
+.contact-main-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  width: 100px;
+  height: 3px;
+  background: #8cc63f;
+  border-radius: 2px;
+}
+
+.upcoming h3 {
+  margin-top: -20px;  /* adjust as needed */
+  margin-bottom: 40px; /* keep space below if needed */
+  font-weight: 400;
+  font-size: 1.1rem;  /* optional: smaller than h2 */
+  color: #616161;     /* optional: match design */
+}
+
+.contact-link {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #6aa84f;
+}
+
+/* Carousel Layout */
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 2000px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  gap: 20px;
+}
+
+/* Arrows */
+.carousel-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+  color: #000000;
+}
+
+/* View All Grid Layout - 5 per row */
+.carousel-track.expanded {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 per line */
+  gap: 20px;
+  transform: none !important; /* cancel horizontal scroll transform */
+  transition: all 0.5s ease;
+}
+
+/* Mobile: fallback to fewer cards per row */
+@media (max-width: 1200px) {
+  .carousel-track.expanded {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-track.expanded {
+    grid-template-columns: repeat(1, 1fr); /* 1 per row on mobile */
+  }
+}
+
+.view-all-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Fade out / fade in */
+.fade-transition {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Smooth fade for individual cards */
+.card-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card-fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Auction Card */
+
+.auction-card {
+  flex: 0 0 calc((100% - 40px) / 3); /* 3 cards with 20px gaps */
+  aspect-ratio: 4 / 3;  
+  background: #f2f2f2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auction-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Placeholder block */
+.image-placeholder {
+  width: 90%;
+  height: 90%;
+  background: #ddd;
+  border-radius: 8px;
+}
+
+/* Make auction card positionable */
+
+@media (max-width: 1100px) {
+  .auction-card {
+    flex: 0 0 calc((100% - 20px) / 2); /* 2 cards with 1 gap */
+  }
+}
+
+/* Hover effect for desktop */
+.auction-card:hover .condition-box,.condition-box2,.condition-box3,
+.auction-card:hover .price-box {
+  opacity: 0;
+}
+
+/* Button appears on hover */
+.auction-card .view-popup {
+  opacity: 0;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #8cc63f;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #111; 
+}
+
+.auction-card:hover .view-popup {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Dark overlay effect */
+.auction-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.auction-card {
+  position: relative;
+  overflow: visible; /* important */
+}
+
+@media (max-width: 768px) {
+  .auction-card::after {
+    opacity: 0;
+  }
+
+  .auction-btn {
+    opacity: 100;
+    transform: translateX(-50%);
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+}
+
+
+/* Button positioning */
+.auction-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+/* Hover reveal */
+.auction-card:hover::after {
+  opacity: 1;
+}
+
+.auction-card:hover .auction-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Auction cards in expanded state */
+.carousel-track.expanded .auction-card {
+  width: 100% !important;
+  margin: 0 !important;
+  transition: all 0.5s ease;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  padding-top: 30px; /* gives room for the clip */
+}
+
+/* View All expanded auctions */
+.carousel-track.vertical {
+  display: block;
+  transform: none !important; /* cancel horizontal transform */
+}
+
+.carousel-track.vertical .auction-card {
+  width: 90% !important; /* full width cards */
+  margin: 20px auto;
+  min-width: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .auction-card {
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .carousel-track {
+    gap: 10px; /* slightly smaller spacing for mobile */
+  }
+
+}
+
+/* Auction Filters */
+.auction-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.auction-filters input,
+.auction-filters select {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.auction-filters input::placeholder {
+  color: #8a8a8a;
+}
+
+.auction-filters input:focus,
+.auction-filters select:focus {
+  border-color: #8cc63f;
+  box-shadow: 0 0 10px rgba(140,198,63,0.3);
+}
+
+.auction-filters select {
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .auction-filters {
+    flex-direction: column;
+  }
+
+  .auction-filters input,
+  .auction-filters select {
+    width: 100%;
+  }
+}
+
+/* Focus effect */
+.auction-filters select:focus {
+  border-color: #8cc63f;
+  box-shadow: 0 0 10px rgba(140,198,63,0.3);
+  outline: none;
+}
+
+/* Custom arrow using pseudo-element */
+.auction-filters select::-ms-expand {
+  display: none; /* hide default arrow on IE */
+}
+
+.auction-filters select::after {
+  content: "\25BC"; /* down arrow */
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+/* Option styling */
+.auction-filters select option {
+  background: rgba(0,0,0,0.85); /* dark background for dropdown items */
+  color: #fff;                   /* white text */
+  padding: 10px 15px;
+}
+
+/* Hover effect for options */
+.auction-filters select option:hover {
+  background: #8cc63f;  /* green highlight on hover */
+  color: #111;
+}
+
+/* Style the select itself */
+.auction-filters select {
+  appearance: none; /* remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 12px 40px 12px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #8a8a8a;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Add custom arrow */
+.auction-filters select::after {
+  content: "\25BC"; /* down arrow */
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+/* Focus effect */
+.auction-filters select:focus {
+  border-color: #8cc63f;
+  box-shadow: 0 0 10px rgba(140,198,63,0.3);
+  outline: none;
+}
+
+/* Style the options themselves */
+.auction-filters select option {
+  background: rgba(0,0,0,0.85); /* dark glassy background */
+  color: #fff;                   /* white text */
+  padding: 10px 15px;
+  font-weight: 500;
+}
+
+/* Highlighted / hovered option */
+.auction-filters select option:hover,
+.auction-filters select option:checked {
+  background: #8cc63f;  /* your green highlight */
+  color: #111;          /* dark text when selected */
+}
+
+/* Optional: Make dropdowns more consistent on mobile */
+/* Default wrapper does nothing on desktop */
+.min-max-wrapper {
+  display: contents; /* desktop ignores wrapper */
+}
+
+/* Mobile: side by side for min/max */
+@media (max-width: 900px) {
+  .min-max-wrapper {
+    display: flex;
+    gap: 4%;
+    width: 100%;
+  }
+
+  .min-max-wrapper select {
+    width: 48%;
+  }
+}
+
+/* POPUP OVERLAY */
+
+.auction-popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+}
+
+.auction-popup-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(6px);
+}
+
+/* Position each box separately */
+.condition-box {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  padding: 6px 12px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #8cc63f;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.condition-box2 {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  padding: 6px 12px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #b2c63f;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.condition-box3 {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  padding: 6px 12px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #c6613f;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.price-box {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  padding: 6px 12px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #8cc63f;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* POPUP CONTAINER */
+
+.auction-popup-container{
+  position:relative;
+  display:flex;
+  width:1200px;
+  max-width:90%;
+  gap:40px;
+  z-index:5;
+}
+
+/* LEFT IMAGE BOX */
+
+.auction-popup-gallery{
+  flex:2;
+  background:#000;
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+}
+
+.popup-main-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* CONTROLS */
+.popup-controls {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* split left & right groups */
+  align-items: center;
+  padding: 0 20px; /* spacing from edges */
+  gap: 15px;
+}
+
+/* Left & Right button groups */
+.popup-controls-left,
+.popup-controls-right {
+  display: flex;
+  gap: 10px; /* slightly tighter spacing */
+}
+
+/* Buttons */
+
+.popup-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:12px 22px;
+  border-radius:30px;
+
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 2px solid #8cc63f;
+
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+
+  transition: all 0.3s ease;
+}
+
+.popup-btn:hover{
+  background: rgba(255,255,255,0.35);
+}
+
+.popup-btn:hover i{
+  color:#8cc63f;
+  text-shadow:0 0 6px rgba(140,198,63,0.6);
+}
+
+/* SHINE EFFECT FOR POPUP BUTTONS */
+.popup-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.popup-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: all 0.3s ease;
+}
+
+.popup-btn:hover::after {
+  animation: shine 1s forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+/* Hover effect */
+.popup-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Icon images inside buttons */
+.popup-btn img {
+  width: 18px;   /* smaller icon */
+  height: 18px;
+  display: block;
+  pointer-events: none; /* click still works on button */
+}
+/* counter remains centered */
+.popup-counter {
+  position: absolute;
+  top: 10px;        /* distance from top edge */
+  left: 50%;        /* center horizontally */
+  transform: translateX(-50%); /* exact centering */
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  z-index: 10;
+  opacity: 0;       /* make sure it’s visible */
+  text-align: center;
+}
+
+/* ----- Mobile Optimization ----- */
+@media (max-width: 768px) {
+  .auction-popup-container {
+    flex-direction: column; /* stack left & right */
+    width: 95%;
+    gap: 20px;
+    border-radius: 15px;
+  }
+
+  .auction-popup-gallery,
+  .popup-info {
+    flex: 1 1 100%;
+    min-width: auto;
+    border-radius: 15px;
+  }
+
+  .popup-info {
+    padding: 15px;
+  }
+
+  .popup-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* PROGRESS BAR */
+
+.popup-progress{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:5px;
+  background:rgba(255,255,255,0.1);
+}
+
+.popup-progress-bar{
+  height:100%;
+  width:0%;
+  background:#8cc63f;
+  transition:width 0.3s ease;
+}
+
+/* RIGHT SIDE INFO */
+
+.auction-popup-info{
+  flex:1;
+
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius:40px;
+  padding:40px;
+  color:white;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* subtle hover lift like your other cards */
+.auction-popup-info:hover{
+  transform: translateY(-3px);
+}
+
+.popup-title{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.popup-meta{
+  opacity:0.8;
+  margin-bottom:30px;
+  margin-top: -15px;
+}
+
+/* Constant shine effect for popup bid heading */
+.popup-bid {
+  font-weight: 700;
+  font-size: 1.5em; /* adjust if needed */
+  background: linear-gradient(
+    120deg,
+    #fff 0%,
+    #fff 40%,
+    #c1c1c1 50%,
+    #fff 60%,
+    #fff 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+}
+
+.starting-bid {
+  margin-top: -10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.35);
+}
+
+@keyframes shine-text {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.popup-details{
+  opacity:0.85;
+  margin-top: 10px;
+  font-weight: lighter;
+}
+
+.popup-logo{
+  width:40px;
+  align-self:auto;
+}
+
+/* Date Tag */
+.date-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  padding: 6px 12px;
+  border-radius: 15px;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  color: #8cc63f;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.date-tag span {
+  color: #8cc63f;
+}
+
+/* ENTER NOW BUTTON ON RIGHT INFO CARD */
+.popup-bottom-row {
+  display: flex;
+  justify-content: space-between; /* button left, logo right */
+  align-items: center;            /* vertically center button & logo */
+  margin-top: auto;               /* pushes it to bottom of flex column */
+  width: 100%;
+  gap: 10px;
+}
+
+/* Enter Now button inside this container */
+.enter-now {
+  width: 80%;                     /* left 70% for button */
+  max-width: 80%;
+  font-family: 'Figtree', 'Arial', sans-serif; /* same as body */
+  font-size: 1rem;                 /* match your body font size */
+  font-weight: 400;                 /* normal weight like body */
+  letter-spacing: normal;           /* optional: match body spacing */
+  text-transform: none;             /* remove uppercase if any */
+  background: #8cc63f;;
+  color: #111; 
+}
+
+.listing-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #616161;
+  font-weight: 500;
+  margin-top: 0px;
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.listing-count::before,
+.listing-count::after {
+  content: "";
+  flex: 1;                    /* take up remaining space */
+  height: 1px;                /* thin line */
+  background: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+  margin: 0 15px;             /* space between line and text */
+  max-width: 200px;
+}
+
+.auction-clock {
+  margin-top: 8px;
+  font-family: "digital-7";
+  font-size: 1.7rem;
+  color: #8cc63f;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: -5px;
+}
+
+/* ----- Mobile Layout for Popup Auction ----- */
+
+@media (max-width: 1000px) { /* switch to stacked only when container < 100% width */
+  .auction-popup-container {
+    flex-direction: column;
+    width: 95%;
+    gap: 20px;
+    padding: 10px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Left Gallery maintains 4:3 */
+  .auction-popup-gallery {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: 15px;
+  }
+
+  .popup-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  /* Right info card scales down content */
+  .auction-popup-info {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Bottom row: Enter Now + Logo stays in one line */
+  .popup-bottom-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .enter-now {
+    width: 80%;
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+
+  .popup-logo {
+    width: 30px;
+    height: auto;
+  }
+
+  /* Popup controls buttons shrink */
+  .popup-controls .popup-btn {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    gap: 5px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .popup-controls {
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  /* Popup counter smaller */
+  .popup-counter {
+    font-size: 11px;
+    padding: 3px 6px;
+    opacity: 0;
+  }
+}
+
+/* About US */
+.aboutus {
+  position: relative;       /* needed for pseudo-elements */
+  padding: 80px 20px;
+  text-align: center;
+  background: url("Images/heroshot.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* Top & Bottom thin green lines */
+.aboutus::before,
+.aboutus::after {
+  content: "";               /* must have content */
+  position: absolute;        /* position relative to .aboutus */
+  left: 0;
+  width: 100%;
+  height: 3px;               /* thickness of line */
+  background-color: #8cc63f; /* your green color */
+  z-index: 2;
+}
+
+.aboutus::before { top: 0; }
+.aboutus::after  { bottom: 0; }
+
+/* About Section Layout */
+.about-container {
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+  color: #ccc;
+}
+
+.about-text h2 {
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  line-height: 1.8;
+  font-weight: lighter;
+  font-size: 1.2rem;
+}
+
+/* ABOUT US heading with line to the right */
+.about-text h2 {
+  display: flex;
+  align-items: center;  /* vertically center text and line */
+  gap: 20px;            /* space between text and line */
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-text h2::after {
+  content: "";
+  flex: 1;                       /* line fills remaining space */
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  display: block;
+}
+
+/* Image Slider */
+.about-slider {
+  float: right;
+  width: 65%;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 350px;
+  position: relative;
+  margin-left: 20px;   /* space between text and image */
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.about-slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.about-slider-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+/* Section Headings: Upcoming Auctions, About Us, Contact */
+/* Headings with shine effect */
+.upcoming h2,
+.contact-main-heading {
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+  color: #616161;                 /* original text color */
+  background: linear-gradient(
+    120deg,
+    #616161 0%,
+    #616161 40%,
+    #c1c1c1 50%,
+    #616161 60%,
+    #616161 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+}
+
+/* Thin divider line between About Us and Why Choose NIMAI */
+.about-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 120px auto;      /* space above and below */
+  width: 100%;            /* full width container */
+  max-width: 1400px;      /* same as about-container */
+}
+
+.about-divider::before,
+.about-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;            /* thin line */
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 30px;         /* space between line ends and center */
+}
+
+/* WHY NIMAI SECTION */
+
+.why-nimai {
+  text-align: center;
+  margin-top: -40px;
+}
+
+.why-nimai h3 {
+  position: relative;
+  display: inline-block;
+
+  background: linear-gradient(
+    120deg,
+    #8cc63f 0%,
+    #8cc63f 40%,
+    #bdf07b 50%,
+    #8cc63f 60%,
+    #8cc63f 100%
+  );
+
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+}
+
+.why-nimai h3 {
+  font-size: 1.6rem;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* Center content inside card */
+.why-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontally center */
+  text-align: center;    /* center paragraph */
+  padding: 25px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optional: scale icon slightly on hover */
+.why-card:hover .why-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECT */
+
+.why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* CARDS */
+
+.why-card p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  line-height: 1.5;
+  color: #ffffff;
+  font-weight: lighter;
+}
+
+/* WHY CARD ICONS */
+.why-icon {
+  width: 60px;         /* adjust size as needed */
+  height: 60px;
+  margin-bottom: 15px; /* space between icon and text */
+}
+
+@media (max-width: 1000px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ABOUT STATS */
+
+.about-stats {
+  margin-top: 40px;
+  padding: 60px 10%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+/* Individual stat */
+
+.stat h3 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #8cc63f; /* same green as buttons */
+  margin-bottom: 8px;
+}
+
+/* Shine animation for stats numbers */
+.stat h3 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #8cc63f; /* fallback */
+  margin-bottom: 8px;
+
+  /* Shine effect */
+  background: linear-gradient(
+    120deg,
+    #8cc63f 0%,
+    #8cc63f 40%,
+    #bdf07b 50%,
+    #8cc63f 60%,
+    #8cc63f 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 4s linear infinite;
+}
+
+@keyframes shineText {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.stat p {
+  color: #d4d4d4;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: lighter;
+}
+
+/* subtle separators */
+
+.stat {
+  position: relative;
+}
+
+.stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 20%;
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .stat:not(:last-child)::after {
+    display: none;
+  }
+
+  .about-slider {
+    aspect-ratio: 6/4;
+  }
+
+}
+
+/* Shine animation */
+@keyframes shineText {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-slider {
+    width: 100%;
+  }
+}
+
+/* Contact */
+.contact {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact input, .contact textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact button {
+  padding: 12px;
+  border: none;
+  background: #111;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact .socials {
+  margin-top: 20px;
+}
+
+.contact .socials a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: #111;
+  transition: color 0.3s;
+}
+
+.contact .socials a:hover {
+  color: #8cc63f;
+}
+
+/* Contact Layout */
+
+.contact-box {
+  width: 500px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* Improve form spacing inside box */
+.contact-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-box input,
+.contact-box textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.contact-box button {
+  padding: 12px;
+  background: #111;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-box button:hover {
+  background: #8cc63f;
+}
+
+.contact-box .socials {
+  margin-top: 25px;
+}
+
+/* Main CONTACT heading */
+.contact-main-heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Layout */
+/* CONTACT LAYOUT */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* makes both boxes equal height */
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto 100px auto;
+  padding: 0 20px;
+}
+
+/* Make both sides equal */
+.contact-container,
+.contact-info {
+  flex: 1;
+  display: flex;
+}
+
+/* Glass card style */
+.contact-box,
+.contact-info-card {
+  width: 100%;
+  max-width: 500px;
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 8px;
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+/* Ensure both cards stretch evenly */
+.contact-container {
+  justify-content: flex-end;
+}
+
+.contact-info {
+  justify-content: flex-start;
+}
+
+/* Hover lift */
+.contact-box:hover,
+.contact-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* RIGHT SIDE CONTENT */
+.contact-info-card {
+  text-align: left;
+  position: relative;
+}
+
+/* Subtle top accent line (brand color) */
+.contact-info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #8cc63f;
+  border-radius: 8px 8px 0 0;
+}
+
+.contact-info-card h3 {
+  margin-bottom: 40px;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Contact blocks */
+.contact-detail {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.contact-detail:last-child {
+  border-bottom: none;
+}
+
+/* Label */
+.contact-detail span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #616161;
+  margin-bottom: 6px;
+}
+
+/* Main info */
+.contact-detail a {
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Hover interaction */
+.contact-detail a:hover {
+  color: #8cc63f;
+  transform: translateX(4px);
+}
+
+/* Animate underline for phone & email like footer links */
+.contact-detail a {
+  position: relative;           /* needed for pseudo-element */
+  display: inline-block;        /* keeps layout */
+  color: #111;                  /* original color */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.35s ease; /* smooth hover */
+}
+
+/* Create green underline */
+.contact-detail a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #8cc63f;          /* same green as your top accent */
+  transition: width 0.35s ease; /* smooth expand */
+}
+
+/* On hover: move text slightly + expand underline */
+.contact-detail a:hover {
+  color: #8cc63f;
+  transform: translateX(4px);
+}
+
+.contact-detail a:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+}
+
+/* Footer links inside contact card */
+.contact-footer-links {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-footer-links .footer-link {
+  color: #616161;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  display: inline-block;
+
+  transform: translateX(0);          /* starting position */
+  transition: transform 0.35s ease,  /* smooth movement */
+              color 0.3s ease;
+}
+
+/* smooth slide */
+.contact-footer-links .footer-link:hover {
+  transform: translateX(4px);
+}
+
+/* underline animation (keep as is) */
+.contact-footer-links .footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #8cc63f;
+  transition: width 0.3s ease;
+}
+
+.contact-footer-links .footer-link:hover::after {
+  width: 100%;
+}
+
+/* Bottom links under contact boxes */
+.contact-bottom-links {
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Use same style as Help & Support links */
+.contact-bottom-links .footer-link {
+  color: #616161;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  display: inline-block;
+
+  transform: translateX(0);
+  transition: transform 0.35s ease, color 0.3s ease;
+}
+
+.contact-bottom-links .footer-link:hover {
+  transform: translateX(4px);
+  color: #8cc63f;
+}
+
+.contact-bottom-links .footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #8cc63f;
+  transition: width 0.3s ease;
+}
+
+.contact-bottom-links .footer-link:hover::after {
+  width: 100%;
+}
+
+.contact-bottom-text {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #8a8a8a;
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  margin-bottom: -45px;
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #ffffff;
+  color: #333;
+  font-weight: lighter;
+}
+
+
+/* Modal Hidden State */
+.login-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Dark background */
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+}
+
+/* Glass container */
+.login-container {
+  position: relative;
+  width: 400px;
+  max-width: 90%;               /* mobile friendly */
+  padding: 40px 30px;
+  border-radius: 16px;          /* more rounded for modern look */
+  background: rgba(255, 255, 255, 0.1); /* more transparent for glass effect */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.2);
+  text-align: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.login-container:hover {
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+.login-container h2 {
+  margin-bottom: 25px;
+}
+
+/* Form */
+.login-container input,
+.login-container select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.login-container input:focus,
+.login-container select:focus {
+  border-color: #8cc63f;
+  box-shadow: 0 0 10px rgba(140,198,63,0.3);
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.login-container .btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #8cc63f;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.login-container .btn:hover {
+  background: #76b130;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #8cc63f;
+  font-weight: 600;
+}
+
+/* Signup text */
+.signup-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.signup-text a {
+  color: #8cc63f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+  color: #a0d650;
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+.login-container h2 {
+  color: #fff;
+}
+
+::selection {
+  background-color: #8cc63f; /* highlight background */
+  color: #fff;               /* text color while highlighted */
+}
+
+/* Optional: for Mozilla Firefox */
+::-moz-selection {
+  background-color: #8cc63f;
+  color: #fff;
+}
+
+.login-container input::placeholder,
+.login-container select::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* brighter white */
+  opacity: 1; /* ensures consistent opacity across browsers */
+  font-weight: 500;
+}
+
+/* Optional: for Firefox */
+.login-container input::-moz-placeholder,
+.login-container select::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+/* Optional: for IE */
+.login-container input:-ms-input-placeholder,
+.login-container select:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style the dropdown options */
+.login-container select option {
+  background-color: #2f333a;  /* dark background for readability */
+  color: #fff;                 /* bright text */
+  padding: 10px 15px;
+  font-weight: 500;
+}
+
+/* Hover or selected option */
+.login-container select option:hover,
+.login-container select option:checked {
+  background-color: #8cc63f;   /* green highlight */
+  color: #111;                 /* dark text on highlight */
+}
+
+/* Custom dropdown arrow */
+.login-container select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23fff'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px 6px;
+  padding-right: 35px; /* make room for arrow */
+}
