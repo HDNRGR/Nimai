@@ -343,7 +343,7 @@ viewAllBtn.addEventListener("click", () => {
   });
 
   // ----- Hero Crossfade -----
-  const heroImages = ["Images/hero1.png", "Images/hero2.png", "Images/hero3.png"];
+  const heroImages = ["hero1.png", "hero2.png", "hero3.png"];
   const overlayA = document.querySelector(".overlay-a");
   const overlayB = document.querySelector(".overlay-b");
   let heroIdx = 0;
