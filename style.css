@@ -142,7 +142,7 @@ html {
 
 .hero {
   height: 100vh;
-  background: url("Images/heroshot.png") center/cover no-repeat;
+  background: url("heroshot.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,7 +198,7 @@ html {
   transform: translate(-50%, -50%); /* center precisely */
   width: 100%;              /* match roughly the hero logo width */
   height: 60%;             /* thin band height */
-  background: url("Images/hero1.jpg") center/cover no-repeat;
+  background: url("hero1.jpg") center/cover no-repeat;
   opacity: 0.15;             /* subtle overlay */
   pointer-events: none;      /* let clicks pass through */
   z-index: 0;                /* behind text/buttons */
@@ -1364,7 +1364,7 @@ button.btn {
   position: relative;       /* needed for pseudo-elements */
   padding: 80px 20px;
   text-align: center;
-  background: url("Images/heroshot.png") center/cover no-repeat;
+  background: url("heroshot.png") center/cover no-repeat;
   overflow: hidden;
 }
 
