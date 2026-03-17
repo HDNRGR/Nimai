@@ -443,3 +443,32 @@ viewAllBtn.addEventListener("click", () => {
 setInterval(updateAuctionClock, 1000);
 updateAuctionClock();
 });
+
+// ----- MOBILE CARD TAP (clean + controlled) -----
+function handleCardTap(e) {
+  const card = e.target.closest('.auction-card');
+
+  // Click outside cards → close all
+  if (!card) {
+    document.querySelectorAll('.auction-card')
+      .forEach(c => c.classList.remove('active'));
+    return;
+  }
+
+  // Ignore button clicks
+  if (e.target.closest('.auction-btn')) return;
+
+  // Only run on mobile AND when carousel is active
+  if (window.innerWidth <= 768 && isCarouselEnabled) {
+
+    document.querySelectorAll('.auction-card')
+      .forEach(c => {
+        if (c !== card) c.classList.remove('active');
+      });
+
+    card.classList.toggle('active');
+  }
+}
+
+// Attach once DOM is ready
+document.addEventListener('click', handleCardTap);
