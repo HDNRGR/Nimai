@@ -396,6 +396,43 @@ button.btn {
   left: 125%;
 }
 
+@media (max-width: 768px) {
+
+  /* Make overlay slightly shorter so it doesn’t dominate */
+  .hero-overlay {
+    height: 30%;
+  }
+
+  /* Smaller logo on mobile */
+  .hero-logo {
+    width: 320px;
+    margin-top: 20px;
+  }
+
+  /* Slightly smaller buttons */
+  .hero-buttons {
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .btn,
+  button.btn {
+    padding: 8px 16px;   /* reduced size */
+    font-size: 0.9rem;   /* slightly smaller text */
+  }
+
+  /* Bottom text spacing tweak */
+  .hero-bottom-text {
+    bottom: 25px;
+    font-size: 0.85rem;
+  }
+
+  /* Adjust green line width for smaller screens */
+  .hero-bottom-text::before {
+    width: 40%;
+  }
+}
+
 /* Upcoming */
 .upcoming {
   padding: 60px 20px;
@@ -844,6 +881,16 @@ button.btn {
   }
 }
 
+@media (max-width: 768px) {
+  .auction-btn {
+    opacity: 0; /* MUST be hidden by default */
+  }
+
+  .auction-card.active .auction-btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
 /* POPUP OVERLAY */
 
 .auction-popup{
