@@ -472,3 +472,26 @@ function handleCardTap(e) {
 
 // Attach once DOM is ready
 document.addEventListener('click', handleCardTap);
+
+function updatePopupLayout() {
+  const container = document.querySelector(".auction-popup-container");
+  const gallery = document.querySelector(".auction-popup-gallery");
+  const info = document.querySelector(".popup-info");
+
+  if (!container || !gallery || !info) return;
+
+  const containerWidth = container.clientWidth;
+  const galleryAspect = gallery.dataset.aspect || 16/9; // Set data-aspect on image container if known
+  const minGalleryWidth = gallery.clientHeight * galleryAspect;
+
+  // Check if both gallery and info can fit side by side
+  if (containerWidth >= minGalleryWidth + info.offsetWidth + 40) { // +40 = gap
+    container.style.flexDirection = "row";
+  } else {
+    container.style.flexDirection = "column";
+  }
+}
+
+// Run on load and resize
+window.addEventListener("load", updatePopupLayout);
+window.addEventListener("resize", updatePopupLayout);
