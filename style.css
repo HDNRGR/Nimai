@@ -23,25 +23,33 @@ html {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  background: rgba(92, 92, 92, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 5px;
+
+  /* GLASS EFFECT (match modal) */
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 20px;
+  padding: 3px 20px;
+
   z-index: 1000;
-  transition: all 0.3s ease; /* enables animation */
+  transition: all 0.3s ease;
   font-family: 'Oswald', sans-serif;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  /* softer + deeper shadow like modal */
+  box-shadow: 0 10px 50px rgba(0,0,0,0.25);
 }
 
 /* Animate navbar on hover */
 .navbar:hover {
   transform: translateX(-50%) translateY(-2px); /* lift up slightly */
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);   /* stronger shadow */
-  background: rgba(92, 92, 92, 0.2);        /* lighten background */
+  background: rgba(0, 0, 0, 0.3);        /* lighten background */
   width: 93%;
 }
 
@@ -600,12 +608,6 @@ button.btn {
   }
 }
 
-/* Hover effect for desktop */
-.auction-card:hover .condition-box,.condition-box2,.condition-box3,
-.auction-card:hover .price-box {
-  opacity: 0;
-}
-
 /* Button appears on hover */
 .auction-card .view-popup {
   opacity: 0;
@@ -956,6 +958,12 @@ button.btn {
   transition: all 0.3s ease;
 }
 
+/* Hover effect for desktop */
+.auction-card:hover .condition-box, .auction-card:hover .condition-box2, .auction-card:hover .condition-box3,
+.auction-card:hover .price-box {
+  opacity: 0;
+}
+
 .price-box {
   position: absolute;
   bottom: 10px;
@@ -1020,34 +1028,48 @@ button.btn {
 
 /* Buttons */
 
-.popup-btn{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.popup-btn {
+  position: relative;
+  overflow: hidden;
 
-  padding:12px 22px;
-  border-radius:30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
+  padding: 10px 18px;
+  border-radius: 30px;
+
+  /* GLASS STYLE */
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-  border: 2px solid #8cc63f;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  color:white;
-  font-weight:600;
-  cursor:pointer;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 
   transition: all 0.3s ease;
 }
 
-.popup-btn:hover{
-  background: rgba(255,255,255,0.35);
+.popup-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+
+  background: rgba(0, 0, 0, 0.3);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
 .popup-btn:hover i{
   color:#8cc63f;
   text-shadow:0 0 6px rgba(140,198,63,0.6);
+}
+
+.enter-now:hover {
+  color: #fff;
 }
 
 /* SHINE EFFECT FOR POPUP BUTTONS */
@@ -1143,6 +1165,11 @@ button.btn {
     flex-direction: column;
     gap: 10px;
   }
+
+  .popup-bottom-row .enter-now {
+    padding: 12px 22px;     /* matches desktop padding for left/right spacing */
+    margin-top: 12px;       /* spacing from the content above */
+  }
 }
 
 /* PROGRESS BAR */
@@ -1165,30 +1192,38 @@ button.btn {
 
 /* RIGHT SIDE INFO */
 
-.auction-popup-info{
-  flex:1;
+.auction-popup-info {
+  flex: 1;
 
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* GLASS (match login modal exactly) */
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-  border-radius:40px;
-  padding:40px;
-  color:white;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  padding: 40px;
+  color: white;
 
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* deeper, softer shadow like modal */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+
   transition: all 0.3s ease;
 }
 
 /* subtle hover lift like your other cards */
-.auction-popup-info:hover{
-  transform: translateY(-3px);
-}
+.auction-popup-info:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
 
+  /* subtle brightness lift */
+  background: rgba(0, 0, 0, 0.4);
+}
 .popup-title{
   font-size:32px;
   margin-bottom:15px;
@@ -1582,16 +1617,26 @@ button.btn {
 
 /* Center content inside card */
 .why-card {
+  position: relative;
+
   display: flex;
   flex-direction: column;
-  align-items: center;   /* horizontally center */
-  text-align: center;    /* center paragraph */
+  align-items: center;
+  text-align: center;
+
   padding: 25px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid #ffffff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+
+  /* TRUE GLASS STYLE */
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+  transition: all 0.3s ease;
 }
 
 /* Optional: scale icon slightly on hover */
@@ -1603,10 +1648,12 @@ button.btn {
 /* HOVER EFFECT */
 
 .why-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
 
+  /* slight brightness lift */
+  background: rgba(255, 255, 255, 0.12);
+}
 /* CARDS */
 
 .why-card p {
@@ -1900,6 +1947,7 @@ button.btn {
 .contact-info-card {
   text-align: left;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Subtle top accent line (brand color) */
@@ -2099,8 +2147,8 @@ button.btn {
 footer {
   padding: 20px;
   text-align: center;
-  background: #ffffff;
-  color: #333;
+  background: #616161;
+  color: #ffffff;
   font-weight: lighter;
 }
 
@@ -2130,7 +2178,7 @@ footer {
   max-width: 90%;               /* mobile friendly */
   padding: 40px 30px;
   border-radius: 16px;          /* more rounded for modern look */
-  background: rgba(255, 255, 255, 0.1); /* more transparent for glass effect */
+  background: rgba(0, 0, 0, 0.2); /* more transparent for glass effect */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
