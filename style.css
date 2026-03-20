@@ -8,8 +8,7 @@ body {
   font-family: 'Figtree', 'Arial', sans-serif;
   line-height: 1.6;
   color: #333;
-  background: #e3e2e0;
-  font-weight: bold;
+  background: #e3e3e3;
 }
 
 html {
@@ -39,10 +38,17 @@ html {
 
   z-index: 1000;
   transition: all 0.3s ease;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Eurostile', sans-serif;
 
   /* softer + deeper shadow like modal */
   box-shadow: 0 10px 50px rgba(0,0,0,0.25);
+}
+
+@font-face {
+  font-family: "Eurostile";
+  src: url("fonts/Eurostile.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* Animate navbar on hover */
@@ -168,7 +174,6 @@ html {
 
 .hero {
   height: 100vh;
-  background: url("heroshot.png") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,14 +207,34 @@ html {
 }
 
 /* Top & Bottom Green Borders for Hero */
-.hero::after {
+section::before,
+section::after{
   content: "";
   position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;             /* thin border height */
-  background-color: #8cc63f; /* your green accent */
-  z-index: 2;               /* above overlays but below text/buttons */
+  bottom: 0;
+  width: 90%;
+  left: 50%;  /* center it */
+  transform: translateX(-50%);left: 50%;  /* center it */
+  transform: translateX(-50%);
+  height: 2px;
+  background: linear-gradient(270deg, #e3e3e3, #8cc63f, #e3e3e3);
+  background-size: 600% 100%;
+  animation: flowLine 4s linear infinite;
+  border-radius: 2px;
+  z-index: 2;
+
+  /* Fade out the ends */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+@keyframes flowLine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .hero::after {
@@ -225,7 +250,7 @@ html {
   width: 100%;              /* match roughly the hero logo width */
   height: 60%;             /* thin band height */
   background: url("hero1.jpg") center/cover no-repeat;
-  opacity: 0.15;             /* subtle overlay */
+  opacity: 0.65;             /* subtle overlay */
   pointer-events: none;      /* let clicks pass through */
   z-index: 0;                /* behind text/buttons */
   border-radius: 10px;       /* optional soft edges */
@@ -236,7 +261,7 @@ html {
     transition: opacity 2s ease;
 }
 
-.overlay-a{ opacity:0.15; }
+.overlay-a{ opacity:0.65; }
 .overlay-b{ opacity:0; }
 
 /* Ensure hero content is above overlay */
@@ -254,7 +279,7 @@ html {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: rgba(255,255,255,0.85);
+  color: #616161;
   font-size: 1rem;
   letter-spacing: 2px;
 }
@@ -399,6 +424,7 @@ button.btn {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  margin-bottom: 40px;
 }
 
 .btn::before,
@@ -461,7 +487,7 @@ button.btn {
 
 /* Upcoming */
 .upcoming {
-  padding: 60px 20px;
+  padding: 40px 20px;
   text-align: center;
   position: relative;
 }
@@ -478,17 +504,17 @@ button.btn {
   margin-bottom: 60px;
 }
 
-.upcoming h2::after,
-.contact-main-heading::after {
+/* Thin green line under Upcoming Auctions heading */
+.upcoming h2::after {
   content: "";
   position: absolute;
+  bottom: -10px;            /* distance from heading */
   left: 50%;
   transform: translateX(-50%);
-  bottom: -12px;
-  width: 100px;
-  height: 3px;
-  background: #8cc63f;
-  border-radius: 2px;
+  width: 190px;              /* line length */
+  height: 3px;              /* thickness */
+  background-color: #8cc63f; /* brand green */
+  border-radius: 2px;       /* rounded ends */
 }
 
 .upcoming h3 {
@@ -686,6 +712,7 @@ button.btn {
   opacity: 0;
   transition: all 0.3s ease;
   z-index: 2;
+  margin-bottom: -4px;
 }
 
 /* Hover reveal */
@@ -1336,7 +1363,7 @@ button.btn {
 .enter-now {
   width: 80%;                     /* left 70% for button */
   max-width: 80%;
-  font-family: 'Figtree', 'Arial', sans-serif; /* same as body */
+  font-family: 'Figtree', 'Arial', sans-serif;
   font-size: 1rem;                 /* match your body font size */
   font-weight: 400;                 /* normal weight like body */
   letter-spacing: normal;           /* optional: match body spacing */
@@ -1362,7 +1389,7 @@ button.btn {
   content: "";
   flex: 1;                    /* take up remaining space */
   height: 1px;                /* thin line */
-  background: rgba(255, 255, 255, 0.5); /* semi-transparent white */
+  background: #cacaca; /* semi-transparent white */
   margin: 0 15px;             /* space between line and text */
   max-width: 200px;
 }
@@ -1471,24 +1498,10 @@ button.btn {
   position: relative;       /* needed for pseudo-elements */
   padding: 80px 20px;
   text-align: center;
-  background: url("heroshot.png") center/cover no-repeat;
+
   overflow: hidden;
 }
 
-/* Top & Bottom thin green lines */
-.aboutus::before,
-.aboutus::after {
-  content: "";               /* must have content */
-  position: absolute;        /* position relative to .aboutus */
-  left: 0;
-  width: 100%;
-  height: 3px;               /* thickness of line */
-  background-color: #8cc63f; /* your green color */
-  z-index: 2;
-}
-
-.aboutus::before { top: 0; }
-.aboutus::after  { bottom: 0; }
 
 /* About Section Layout */
 .about-container {
@@ -1502,11 +1515,7 @@ button.btn {
 .about-text {
   flex: 1;
   text-align: left;
-  color: #ccc;
-}
-
-.about-text h2 {
-  margin-bottom: 20px;
+  color: #616161;
 }
 
 .about-text p {
@@ -1520,7 +1529,7 @@ button.btn {
   display: flex;
   align-items: center;  /* vertically center text and line */
   gap: 20px;            /* space between text and line */
-  color: #fff;
+  color: #616161;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -1529,7 +1538,7 @@ button.btn {
   content: "";
   flex: 1;                       /* line fills remaining space */
   height: 1px;
-  background: rgba(255, 255, 255, 0.3);
+  background: #616161;
   display: block;
 }
 
@@ -1597,7 +1606,7 @@ button.btn {
   content: "";
   flex: 1;
   height: 1px;            /* thin line */
-  background: rgba(255, 255, 255, 0.3);
+  background: #616161;
   margin: 0 30px;         /* space between line ends and center */
 }
 
@@ -1628,7 +1637,7 @@ button.btn {
 }
 
 .why-nimai h3 {
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   margin-bottom: 40px;
 }
 
@@ -1653,13 +1662,13 @@ button.btn {
   border-radius: 16px;
 
   /* TRUE GLASS STYLE */
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 
   border: 1px solid rgba(255, 255, 255, 0.2);
 
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 5px 40px rgba(0,0,0,0.15);
 
   transition: all 0.3s ease;
 }
@@ -1674,7 +1683,7 @@ button.btn {
 
 .why-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 60px rgba(0,0,0,0.20);
 
   /* slight brightness lift */
   background: rgba(255, 255, 255, 0.12);
@@ -1685,7 +1694,7 @@ button.btn {
   font-size: 0.95rem;
   opacity: 0.8;
   line-height: 1.5;
-  color: #ffffff;
+  color: #616161;
   font-weight: lighter;
 }
 
@@ -1717,6 +1726,7 @@ button.btn {
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   text-align: center;
+  margin-bottom: -70px;
 }
 
 /* Individual stat */
@@ -1760,7 +1770,7 @@ button.btn {
 }
 
 .stat p {
-  color: #d4d4d4;
+  color: #616161;
   font-size: 14px;
   letter-spacing: 1px;
   font-weight: lighter;
@@ -1779,7 +1789,7 @@ button.btn {
   top: 20%;
   width: 1px;
   height: 60%;
-  background: rgba(255, 255, 255, 0.2);
+  background: #cfcfcf;
 }
 
 /* Mobile */
@@ -1829,6 +1839,7 @@ button.btn {
 .contact {
   padding: 80px 20px;
   text-align: center;
+  margin-top: -40px;
 }
 
 .contact form {
@@ -1914,8 +1925,21 @@ button.btn {
 
 /* Main CONTACT heading */
 .contact-main-heading {
+  position: relative; /* needed for pseudo-element positioning */
   text-align: center;
   margin-bottom: 60px;
+}
+
+.contact-main-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;           /* distance from the heading */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;             /* length of the line */
+  height: 3px;             /* thickness of the line */
+  background-color: #8cc63f; /* your brand green */
+  border-radius: 2px;      /* slightly rounded edges */
 }
 
 /* Layout */
