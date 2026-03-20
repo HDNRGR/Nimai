@@ -374,13 +374,13 @@ viewAllBtn.addEventListener("click", () => {
     if (showingA) {
       if (overlayB) {
         overlayB.style.background = `url(${nextImage}) center/cover no-repeat`;
-        overlayB.style.opacity = "0.15";
+        overlayB.style.opacity = "0.65";
       }
       if (overlayA) overlayA.style.opacity = "0";
     } else {
       if (overlayA) {
         overlayA.style.background = `url(${nextImage}) center/cover no-repeat`;
-        overlayA.style.opacity = "0.15";
+        overlayA.style.opacity = "0.65";
       }
       if (overlayB) overlayB.style.opacity = "0";
     }
