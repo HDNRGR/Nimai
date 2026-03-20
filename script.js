@@ -137,17 +137,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ----- About Section Auto Slider -----
   const aboutTrack = document.querySelector(".about-slider-track");
-  const aboutSlides = document.querySelectorAll(".about-slider-track img");
+const aboutSlides = document.querySelectorAll(".about-slider-track img");
 
-  let aboutIndex = 0;
+let aboutIndex = 0;
+
+if (aboutTrack && aboutSlides.length > 0) {
+  const firstClone = aboutSlides[0].cloneNode(true);
+  aboutTrack.appendChild(firstClone);
+
+  const slides = document.querySelectorAll(".about-slider-track img");
+
   function moveAboutSlider() {
     aboutIndex++;
-    if (aboutIndex >= aboutSlides.length) {
-      aboutIndex = 0;
+    aboutTrack.style.transition = "transform 0.6s ease-in-out";
+    aboutTrack.style.transform = `translateX(-${aboutIndex * 100}%)`;
+
+    // When reaching clone → reset instantly
+    if (aboutIndex === slides.length - 1) {
+      setTimeout(() => {
+        aboutTrack.style.transition = "none";
+        aboutIndex = 0;
+        aboutTrack.style.transform = `translateX(0%)`;
+      }, 600); // match transition duration
     }
-    if (aboutTrack) aboutTrack.style.transform = `translateX(-${aboutIndex * 100}%)`;
   }
+
   setInterval(moveAboutSlider, 4000);
+}
 
   // ----- Login Modal -----
   const loginLink = document.querySelector(".login-link");
